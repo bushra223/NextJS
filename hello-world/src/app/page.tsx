@@ -1,6 +1,7 @@
-function HomePage() {
+import Image from "next/image";
+
+export default function Home() {
   return (
-    <h1>Hello, I am Bushra Attique and this is my first Next.js project.</h1>
+    <div>My name is Bushra Attique and this is my first NextJs project.</div>
   );
 }
-export default HomePage;
