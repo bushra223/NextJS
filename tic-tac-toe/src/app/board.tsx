@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Square from "./square";
 
 function Board() {
@@ -55,7 +55,7 @@ function Board() {
     }
   }
 
-  function handleClick(i) {
+  function handleClick(i: number) {
     //if there is already some value in the squares[i] then return dont let user mark it again
     //or if the winner has been announced then return on further clicks
     //
@@ -93,6 +93,8 @@ function Board() {
 
   useEffect(() => {
     updateStatus();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [squares, xIsNext]);
   return (
     <>
@@ -131,10 +133,6 @@ function Board() {
         >
           Reset
         </button>
-        {/* <button className="relative bg-blue-500 text-white px-4 py-2">
-          Button Text
-          <div className="absolute top-0 left-0 h-full w-full border-b-4 border-yellow-500 transform -rotate-45 origin-top-left"></div>
-        </button> */}
       </div>
     </>
   );
