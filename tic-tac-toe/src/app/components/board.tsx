@@ -9,9 +9,7 @@ function Board() {
 
   function updateStatus() {
     const winner = calculateWinner();
-    console.log("winner", winner);
-
-    //const winner = useMemo(() => calculateWinner(), [squares]);
+ 
     if (winner === "X" || winner === "O") setStatus(`Winner: ${winner}`);
     else if (winner == null) setStatus(`Next player: ${xIsNext ? "X" : "O"}`);
     else if (winner === "Draw") setStatus("It's a Draw!");
@@ -31,9 +29,7 @@ function Board() {
     ];
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
-      console.log(`squares[${a}] = ${squares[a]}`);
-      console.log(`squares[${b}] = ${squares[b]}`);
-      console.log(`squares[${c}] = ${squares[c]}`);
+
 
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c])
         return squares[a];
@@ -41,12 +37,7 @@ function Board() {
         isDraw = false; // if any square is empty, it's not a draw
       }
     }
-    console.log("isDraw: ", isDraw);
-    // if (isDraw) {
-    //   return "Draw"; // if no winner and all squares are filled, it's a draw
-    // }
-
-    // return null; // if no winner and not a draw, return null
+   
 
     if (isDraw) {
       return "Draw"; // if no winner and all squares are filled, it's a draw
@@ -59,11 +50,7 @@ function Board() {
     //if there is already some value in the squares[i] then return dont let user mark it again
     //or if the winner has been announced then return on further clicks
     //
-    if (
-      calculateWinner() ||
-      status.includes("Winner") ||
-      status.includes("Draw")
-    ) {
+    if (calculateWinner() || squares[i]) {
       return;
     }
 
@@ -100,19 +87,91 @@ function Board() {
     <>
       <div className="flex flex-col justify-center items-center ">
         <div className="flex gap-x-1 mb-1">
-          <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
-          <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
-          <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
+          <Square
+            value={squares[0]}
+            onSquareClick={() => handleClick(0)}
+            disableButton={
+              !!squares[0] ||
+              status.includes("Winner") ||
+              status.includes("Draw")
+            }
+          />
+          <Square
+            value={squares[1]}
+            onSquareClick={() => handleClick(1)}
+            disableButton={
+              !!squares[1] ||
+              status.includes("Winner") ||
+              status.includes("Draw")
+            }
+          />
+          <Square
+            value={squares[2]}
+            onSquareClick={() => handleClick(2)}
+            disableButton={
+              !!squares[2] ||
+              status.includes("Winner") ||
+              status.includes("Draw")
+            }
+          />
         </div>
         <div className="flex gap-x-1 mb-1">
-          <Square value={squares[3]} onSquareClick={() => handleClick(3)} />
-          <Square value={squares[4]} onSquareClick={() => handleClick(4)} />
-          <Square value={squares[5]} onSquareClick={() => handleClick(5)} />
+          <Square
+            value={squares[3]}
+            onSquareClick={() => handleClick(3)}
+            disableButton={
+              !!squares[3] ||
+              status.includes("Winner") ||
+              status.includes("Draw")
+            }
+          />
+          <Square
+            value={squares[4]}
+            onSquareClick={() => handleClick(4)}
+            disableButton={
+              !!squares[4] ||
+              status.includes("Winner") ||
+              status.includes("Draw")
+            }
+          />
+          <Square
+            value={squares[5]}
+            onSquareClick={() => handleClick(5)}
+            disableButton={
+              !!squares[5] ||
+              status.includes("Winner") ||
+              status.includes("Draw")
+            }
+          />
         </div>
         <div className="flex gap-x-1">
-          <Square value={squares[6]} onSquareClick={() => handleClick(6)} />
-          <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
-          <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
+          <Square
+            value={squares[6]}
+            onSquareClick={() => handleClick(6)}
+            disableButton={
+              !!squares[6] ||
+              status.includes("Winner") ||
+              status.includes("Draw")
+            }
+          />
+          <Square
+            value={squares[7]}
+            onSquareClick={() => handleClick(7)}
+            disableButton={
+              !!squares[7] ||
+              status.includes("Winner") ||
+              status.includes("Draw")
+            }
+          />
+          <Square
+            value={squares[8]}
+            onSquareClick={() => handleClick(8)}
+            disableButton={
+              !!squares[8] ||
+              status.includes("Winner") ||
+              status.includes("Draw")
+            }
+          />
         </div>
         <div
           className={` mt-4 font-bold py-2 px-4  ${
