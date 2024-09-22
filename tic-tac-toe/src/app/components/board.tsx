@@ -1,18 +1,23 @@
 "use client";
-import React, { useEffect, useState } from "react";
+
 import Square from "./square";
 
-function Board() {
-  const [squares, setSquares] = useState(Array(9).fill(null));
-  const [xIsNext, setXIsNext] = useState(true);
-  const [status, setStatus] = useState("");
+function Board({
+  xIsNext,
+  squares,
+  onPlay,
+}: {
+  xIsNext: boolean;
+  squares: string[];
+  onPlay: (nextSquares: string[]) => void;
+}) {
+  let status = "";
 
   function updateStatus() {
     const winner = calculateWinner();
- 
-    if (winner === "X" || winner === "O") setStatus(`Winner: ${winner}`);
-    else if (winner == null) setStatus(`Next player: ${xIsNext ? "X" : "O"}`);
-    else if (winner === "Draw") setStatus("It's a Draw!");
+    if (winner === "X" || winner === "O") status = `Winner: ${winner}`;
+    else if (winner == null) status = `Next player: ${xIsNext ? "X" : "O"}`;
+    else if (winner === "Draw") status = "It's a Draw!";
   }
 
   function calculateWinner() {
@@ -30,14 +35,12 @@ function Board() {
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
 
-
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c])
         return squares[a];
       if (squares[a] === null || squares[b] === null || squares[c] === null) {
         isDraw = false; // if any square is empty, it's not a draw
       }
     }
-   
 
     if (isDraw) {
       return "Draw"; // if no winner and all squares are filled, it's a draw
@@ -54,17 +57,15 @@ function Board() {
       return;
     }
 
+    //squares array has current values of all the squares in board like[o,null,x,x,o,null...]
     const nextSquares = squares.slice();
     if (xIsNext == true) nextSquares[i] = "X";
     else nextSquares[i] = "O";
-
-    setSquares(nextSquares);
-    setXIsNext(!xIsNext);
+    //now is the time to set values of state variables using onPlay function and sending it the current values of the board
+    onPlay(nextSquares);
   }
-  //updateStatus();
-  //changes will be reflected upon next update or render so we have to use useeffect here
 
-  // In React, when you update state using setState(), it doesn't update immediately. Instead, React batches (groups) multiple state updates together and updates the state asynchronously (after a short delay).
+  //changes will be reflected upon next update or render so we have to use useeffect here
 
   // In React, when you update state using setState(), it doesn't update immediately. Instead, React batches (groups) multiple state updates together and updates the state asynchronously (after a short delay).
   // This means that when you click the button for the first time:
@@ -78,11 +79,7 @@ function Board() {
   // The letter is delivered (asynchronously, after a delay).
   // The recipient reads the letter (your component sees the updated state).
 
-  useEffect(() => {
-    updateStatus();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [squares, xIsNext]);
+  updateStatus();
   return (
     <>
       <div className="flex flex-col justify-center items-center ">
@@ -182,16 +179,6 @@ function Board() {
         >
           {status}
         </div>
-        <button
-          onClick={() => {
-            setSquares(Array(9).fill(null));
-            setXIsNext(true);
-            setStatus("");
-          }}
-          className="mt-4 bg-blue-500 hover:bg-blue-700  font-bold py-2 px-4 rounded text-white"
-        >
-          Reset
-        </button>
       </div>
     </>
   );
