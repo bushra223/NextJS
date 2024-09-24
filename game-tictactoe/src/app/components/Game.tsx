@@ -31,7 +31,7 @@ function Game() {
         <li key={move}>
           <button
             onClick={() => jumpTo(move)}
-            className="bg-blue-950 rounded-lg p-1 text-xs"
+            className="bg-blue-950 rounded-lg p-1 text-xs text-white"
           >
             {description}
           </button>
@@ -42,12 +42,12 @@ function Game() {
 
   return (
     <>
-      <div className=" lg:absolute lg:text-right lg:text-2xl md:absolute left-10 md:w-64 lg:w-80 xl:w-96 text-right sm:static sm:order-2 sm:text-center">
+      <div className=" lg:absolute lg:text-right lg:text-2xl left-10 md:w-64 lg:w-80 xl:w-96 sm:static sm:order-2 sm:text-center sm:mt-3 md:absolute md:text-left md:text-sm md:px-3 text-center order-2 static">
         <ol>{moves}</ol>
       </div>
 
       <div className=" flex flex-1 justify-center md:w-1/2 lg:w-1/3 xl:w-1/4 ">
-        <div className="flex flex-col items-center mr-8 mt-6">
+        <div className="flex flex-col items-center mr-8 mt-6 text-white">
           <div className="mb-2" style={{ fontSize: "1vmax" }}>
             Player 1
           </div>
@@ -78,7 +78,7 @@ function Game() {
           className="flex flex-col items-center mt-6 ml-8"
           style={{ fontSize: "1vmax" }}
         >
-          <h2 className="mb-2">Player 2</h2>
+          <h2 className="mb-2 text-white">Player 2</h2>
           <div className=" border-4 border-blue-500 rounded-lg p-2 text-4xl font-bold text-blue-500">
             O
           </div>

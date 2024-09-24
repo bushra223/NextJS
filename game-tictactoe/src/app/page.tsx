@@ -16,7 +16,7 @@ export default function Home() {
         {/* <div className=" flex flex-col items-center justify-center"> */}
         {/* <!-- Top section --> */}
 
-        <div className="text-rose-800 px-16 py-4 font-bold  mb-4 sm:text-2xl md:text-4xl lg:text-5xl text-center">
+        <div className="text-rose-800 px-16 py-4 font-bold  mb-4 sm:text-2xl md:text-4xl lg:text-5xl text-center sm:text-center">
           Tic Tac Toe
         </div>
 
