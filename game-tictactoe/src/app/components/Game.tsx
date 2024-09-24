@@ -42,11 +42,17 @@ function Game() {
 
   return (
     <>
-      <div className=" lg:absolute lg:text-right lg:text-2xl left-10 md:w-64 lg:w-80 xl:w-96 sm:static sm:order-2 sm:text-center sm:mt-3 md:absolute md:text-left md:text-sm md:px-3 text-center order-2 static">
+      <div
+        className="     
+        lg:w-80 lg:absolute lg:text-2xl  lg:px-10  lg:left-10 lg:text-right
+        xl:w-96    xl:text-right xl:absolute xl:left-20
+        md:static md:order-first md:text-center md:left-20 md:text-4xl 
+         max-sm:static max-sm:order-2 max-sm:text-center max-sm:py-3 max-sm:text-4xl"
+      >
         <ol>{moves}</ol>
       </div>
 
-      <div className=" flex flex-1 justify-center md:w-1/2 lg:w-1/3 xl:w-1/4 ">
+      <div className=" flex flex-1 justify-center sm:1/2 md:w-1/2 lg:w-1/3 xl:w-1/4 ">
         <div className="flex flex-col items-center mr-8 mt-6 text-white">
           <div className="mb-2" style={{ fontSize: "1vmax" }}>
             Player 1
