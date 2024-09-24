@@ -31,7 +31,7 @@ function Game() {
         <li key={move}>
           <button
             onClick={() => jumpTo(move)}
-            className="bg-blue-950 rounded-lg p-1 my-auto text-xs"
+            className="bg-blue-950 rounded-lg p-1 text-xs"
           >
             {description}
           </button>
@@ -42,17 +42,21 @@ function Game() {
 
   return (
     <>
-      <div className="flex flex-1 flex-row justify-center  items-start ">
-        <div className="mx-14">
-          <ol>{moves}</ol>
-        </div>
-        <div className="flex flex-col items-center mt-4 mr-8">
-          <h2 className="mb-2 ">Player 1</h2>
+      <div className=" lg:absolute lg:text-right lg:text-2xl md:absolute left-10 md:w-64 lg:w-80 xl:w-96 text-right sm:static sm:order-2 sm:text-center">
+        <ol>{moves}</ol>
+      </div>
+
+      <div className=" flex flex-1 justify-center md:w-1/2 lg:w-1/3 xl:w-1/4 ">
+        <div className="flex flex-col items-center mr-8 mt-6">
+          <div className="mb-2" style={{ fontSize: "1vmax" }}>
+            Player 1
+          </div>
           <div className=" border-4 border-blue-500 rounded-lg p-2 text-4xl font-bold text-blue-500">
             X
           </div>
         </div>
-        <div className="flex flex-col items-center justify-center">
+
+        <div className="flex flex-col justify-start">
           <Board
             xIsNext={xIsNext}
             squares={currentSquares}
@@ -70,14 +74,16 @@ function Game() {
           </button>
         </div>
 
-        <div className="flex flex-col items-center mt-4 ml-8">
+        <div
+          className="flex flex-col items-center mt-6 ml-8"
+          style={{ fontSize: "1vmax" }}
+        >
           <h2 className="mb-2">Player 2</h2>
           <div className=" border-4 border-blue-500 rounded-lg p-2 text-4xl font-bold text-blue-500">
             O
           </div>
         </div>
       </div>
-      <div className=" flex w-1/6  justify-center "></div>
     </>
   );
   function handleplay(nextSquares: string[]) {

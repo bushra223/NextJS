@@ -82,7 +82,7 @@ function Board({
   updateStatus();
   return (
     <>
-      <div className="flex flex-col justify-center items-center ">
+      <div className="flex flex-col items-center">
         <div className="flex gap-x-1 mb-1">
           <Square
             value={squares[0]}
